@@ -36,11 +36,6 @@ export default function index() {
 
 <main>
   
-  
-
-</main>
-
-
 <div>
   <svg xmlns="http://www.w3.org/2000/svg" style={{display: 'none'}}>
     <symbol id="check2" viewBox="0 0 16 16">
@@ -102,6 +97,11 @@ export default function index() {
     </div>
   </nav>
   </div>
+
+</main>
+
+
+
 
     </>
   )  
