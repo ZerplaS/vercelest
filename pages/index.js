@@ -21,7 +21,7 @@ export default function index() {
         <span className="navbar-toggler-icon" />
       </button>
       <div className="collapse navbar-collapse" id="navbarCollapse">
-        <ul className="navbar-nav me-auto mb-2 mb-md-0">
+        <ul className="navbar-nav me-auto mb-4 mb-md-0">
           <li className="nav-item">
             <a className="nav-link active" aria-current="page"Link href="/.">Home</a>
           </li>
