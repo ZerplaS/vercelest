@@ -59,7 +59,7 @@ export default function shop() {
     </symbol>
   </svg>
   <div className="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-    <button className="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+    <button className="btn btn-bd-info py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
       <svg className="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half" /></svg>
       <span className="visually-hidden" id="bd-theme-text">Toggle theme</span>
     </button>
@@ -127,7 +127,7 @@ export default function shop() {
                 <li>Email support</li>
                 <li>Help center access</li>
               </ul>
-              <button type="button" className="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
+              <button type="button" className="w-100 btn btn-lg btn-outline-info">Sign up for free</button>
             </div>
           </div>
         </div>
@@ -144,13 +144,13 @@ export default function shop() {
                 <li>Priority email support</li>
                 <li>Help center access</li>
               </ul>
-              <button type="button" className="w-100 btn btn-lg btn-primary">Get started</button>
+              <button type="button" className="w-100 btn btn-lg btn-info">Get started</button>
             </div>
           </div>
         </div>
         <div className="col">
-          <div className="card mb-4 rounded-3 shadow-sm border-primary">
-            <div className="card-header py-3 text-bg-primary border-primary">
+          <div className="card mb-4 rounded-3 shadow-sm border-info">
+            <div className="card-header py-3 text-bg-info border-info">
               <h4 className="my-0 fw-normal">Enterprise</h4>
             </div>
             <div className="card-body">
@@ -161,7 +161,7 @@ export default function shop() {
                 <li>Phone and email support</li>
                 <li>Help center access</li>
               </ul>
-              <button type="button" className="w-100 btn btn-lg btn-primary">Contact us</button>
+              <button type="button" className="w-100 btn btn-lg btn-info">Contact us</button>
             </div>
           </div>
         </div>
