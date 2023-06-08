@@ -63,11 +63,11 @@ export default function about() {
           <div className="card shadow-sm">
           <Image src="/images/brrr.jpg" className="bd-placeholder-img card-img-top" alt="14" width={200} height={225}/>
             <div className="card-body">
-              <p className="card-text">Shoot quality, beautiful landscapes.</p>
+              <p className="card-text">Clouds service free fee to all data</p>
               <div className="d-flex justify-content-between align-items-center">
                 <div className="btn-group">
-                  <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
+                  <button type="button" className="btn btn-sm btn-outline-info">View</button>
+                  <button type="button" className="btn btn-sm btn-outline-info">Edit</button>
                 </div>
                 <small className="text-body-secondary">9 mins</small>
               </div>
@@ -78,11 +78,11 @@ export default function about() {
           <div className="card shadow-sm">
           <Image src="/images/Data.jpg" className="bd-placeholder-img card-img-top" alt="view3" width={200} height={225}/>
             <div className="card-body">
-              <p className="card-text">Shoot quality, beautiful landscapes.</p>
+              <p className="card-text">Friendly to user </p>
               <div className="d-flex justify-content-between align-items-center">
                 <div className="btn-group">
-                  <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
+                  <button type="button" className="btn btn-sm btn-outline-info">View</button>
+                  <button type="button" className="btn btn-sm btn-outline-info">Edit</button>
                 </div>
                 <small className="text-body-secondary">9 mins</small>
               </div>
@@ -93,11 +93,11 @@ export default function about() {
           <div className="card shadow-sm">
           <Image src="/images/cloudff7.jpg" className="bd-placeholder-img card-img-top" alt="view3" width={200} height={225}/>
             <div className="card-body">
-              <p className="card-text">Shoot quality, beautiful landscapes.</p>
+              <p className="card-text">Buster sort</p>
               <div className="d-flex justify-content-between align-items-center">
                 <div className="btn-group">
-                  <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
+                  <button type="button" className="btn btn-sm btn-outline-info">View</button>
+                  <button type="button" className="btn btn-sm btn-outline-info">Edit</button>
                 </div>
                 <small className="text-body-secondary">9 mins</small>
               </div>
