@@ -39,7 +39,7 @@ export default function about() {
         </ul>
         <form className="d-flex" role="search">
           
-          <button className="btn btn-outline-info" type="submit">Login</button>
+        <button className="btn btn-outline-info" type="submit"><Link className="nav-link" href="/login" >Login</Link></button>
         </form>
       </div>
     </div>

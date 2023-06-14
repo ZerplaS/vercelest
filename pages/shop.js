@@ -7,7 +7,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 export default function shop() {
   return (
 <>
-
+<Head>
+  <title>PerapongWeb shop</title>
+    </Head>
+    
 <header data-bs-theme="dark">
   <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div className="container-fluid">
@@ -34,7 +37,8 @@ export default function shop() {
         </ul>
         <form className="d-flex" role="search">
           
-          <button className="btn btn-outline-info" type="submit">Login</button>
+          <button className="btn btn-outline-info" type="submit"><Link className="nav-link" href="/login" >Login</Link></button>
+
         </form>
       </div>
     </div>
