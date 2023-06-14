@@ -51,7 +51,7 @@ export default function about() {
   <section className="py-5 text-center container">
     <div className="row py-lg-5">
       <div className="col-lg-6 col-md-8 mx-auto">
-        <h1 className="fw-light">Wattttttt</h1>
+        <h1 className="fw-light">Cloud services are application and infrastructure resources that exist on the Internet. Third-party providers contract with subscribers for these services, allowing customers to leverage powerful computing resources without having to purchase or maintain hardware and software.</h1>
         <p className="lead text-body-primary"></p>
       </div>
     </div>
