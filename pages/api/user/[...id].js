@@ -1,155 +1,57 @@
-import { useSession, signIn, signOut } from "next-auth/react";
-import Link from 'next/link';
-import { useRouter } from "next/router";
+import jwt from "jsonwebtoken";
+// get the client
+const mysql = require("mysql2");
 
-export async function getServerSideProps(req) {
-  const { id } = req.query;
-  const res = await fetch('https://frontend-gray-beta.vercel.app/api/user/' + id, {
-    method: 'GET',
-  })
-  const posts = await res.json();
-
-  return {
-    props: {
-      posts,
-    },
-  };
-}
-
-export default function Component({ posts }) {
-  const { data: session } = useSession();
-  const router = useRouter();
-
-
-  const handleUpdate = (event) => {1
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const jsonData = {
-      id: data.get('studentid'),
-      studentid: data.get('studentid'),
-      firstname: data.get('firstname'),
-      lastname: data.get('lastname'),
-      username: data.get('username'),
-      password: data.get('password'),
-      status: data.get('status')
-    }
-
-      fetch(`https://vercelests.vercel.app/api/user`, {
-        method: 'PUT', // or 'PUT'
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(jsonData),
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status == 'ok') {
-          router.push('/dashboard')
-        } else {
-          console.log('Add Data Not Success')
-          router.push('/dashboard')
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+// create the connection to database
+const connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_DATABASE
+});
  
 
-  }; //end handleSubmit
-  
-  // if (session) {
-    
-    return (
-      <>
-        <nav className="navbar navbar-light bg-success">
-          <div className="container-fluid">
-            <div className="d-flex justify-content-between align-items-center w-100">
-              {/* <div>Signed in as {session.user.email} {session.user.fname} {session.user.lname}</div>
-              <button className="btn btn-danger" onClick={() => signOut()}>Sign out</button> */}
-            </div>
-          </div>
-        </nav>
-        <br />
-        <div className="container ">
-        <div className="card mt-4">
-          <div className="card-body">
-          
-            
-            <form onSubmit={handleUpdate}>
-             {posts.user.map((post, i) => (
-              <>
-            <button type = "submit" className="btn btn-success">Add New</button>
-            <Link href ="/dashboard">
-            <button className="btn btn-warning mx-1">Back</button>
-            </Link>
-              <div className="form-row">
-                <div className="form-group col-md-10">
-                  <label htmlFor="inputEmail4">Student Id</label>
-                  <input type="hidden" className="form-control" name ="studentid" id="studentid" placeholder="Student Id" 
-                  // onChange={(event) => { setPassword(event.target.value) }}
-                  defaultValue={post.id}
-                  required/>
-                </div>
-                <div className="form-group col-md-10">
-                  <label htmlFor="inputEmail4">Firstname</label>
-                  <input type="text" className="form-control" name ="firstname" id="firstname" placeholder="Firstname" 
-                  // onChange={(event) => { setPassword(event.target.value) }}
-                  defaultValue={post.firstname}
-                  required/>
-                </div>
-                <div className="form-group col-md-10">
-                  <label htmlFor="inputAddress">Lastname</label>
-                  <input type="text" className="form-control" name ="lastname" id="lastname" placeholder="Lastname" 
-                  // onChange={(event) => { setPassword(event.target.value) }}
-                  defaultValue={post.lastname}
-                  required/>
-                </div>
-                <div className="form-group col-md-10">
-                  <label htmlFor="inputAddress">Username</label>
-                  <input type="text" className="form-control" name ="username" id="username" placeholder="Username"
-                  // onChange={(event) => { setPassword(event.target.value) }}
-                  defaultValue={post.username}
-                  required />
-                </div>
-                <div className="form-group col-md-10">
-                  <label htmlFor="inputPassword4">Password</label>
-                  <input type="password" className="form-control" name ="password" id="password" placeholder="Password" 
-                  // onChange={(event) => { setPassword(event.target.value) }}
-                  defaultValue={post.password}
-                  required/>
-                </div>
-              </div>
-              <div className="form-group col-md-10">
-                <label htmlFor="inputAddress2">Status</label>
-                <input type="text" className="form-control" name ="status" id="status" placeholder="Status" 
-                // onChange={(event) => { setPassword(event.target.value) }}
-                defaultValue={post.status}
-                required/>
-              </div>
-              <div className="form-group">
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" id="gridCheck" />
-                  <label className="form-check-label" htmlFor="gridCheck">
-                    Check me out
-                  </label>
-                </div>
-              </div>
-              </>
-              ))}
-            </form>
-          </div>
-        </div>
-        </div>
-      </>
-    );
-  // }
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).end();
+  }
 
-  return (
-    <>
-      <div className="alert alert-danger" role="alert">
-        Not signed in <br />
-        <button className="btn btn-primary" onClick={() => signIn()}>Sign in</button>
-      </div>
-    </>
-  );
+  if (req.method === 'POST') {
+    const { username, password } = req.body;
+
+    connection.connect(async (error) => {
+      if (error) {
+        console.error('Error connecting to database:', error.message);
+        return res.status(500).json({ message: 'Failed to connect to database' });
+      }
+
+      const sql = 'SELECT * FROM tbl_users WHERE username = ? AND password = ?';
+     
+      try {
+        const results = await new Promise((resolve, reject) => {
+          connection.query(sql, [username, password], (error, results) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(results);
+            }
+          });
+        });
+
+        if (results.length > 0) {
+          console.log("Hello")
+          return res.status(200).json({ status: 'ok', message: 'Login successful', user: results });
+        } else {
+          console.log("Please keep login")
+          return res.status(401).json({ message: 'Invalid credentials' });
+        }
+      } catch (error) {
+        console.error('Error retrieving user:', error.message);
+        return res.status(500).json({ message: 'Failed to retrieve user' });
+      } finally {
+        connection.end();
+      }
+    });
+  }
 }
