@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import Link from 'next/link';
 export async function getServerSideProps() {
   //Edit Ngrok
-  const res = await fetch('vercelests-git-main-zerplas.vercel.app/api/users');
+  const res = await fetch('https://vercelests.vercel.app//api/users');
   const posts = await res.json();
 
   return {
