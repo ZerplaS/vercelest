@@ -19,7 +19,7 @@ export default function Component({ posts }) {
       status: data.get('status')
     }
       //Edit Ngrok
-      fetch(`https://vercelests-git-main-zerplas.vercel.app/api/users`, {
+      fetch(`https://vercelests.vercel.app/api/users`, {
         method: 'POST', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',
