@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { useRouter } from "next/router";
 
 export async function getServerSideProps(req) {
-  const { id } = req.query;
-  const res = await fetch('https://vercelests.vercel.app/api/user/' + id, {
+  const id = req.query;
+  const res = await fetch('http://localhost:3000/api/user?id=' + id, {
     method: 'GET',
   })
   const posts = await res.json();
@@ -19,9 +19,9 @@ export async function getServerSideProps(req) {
 export default function Component({ posts }) {
   const { data: session } = useSession();
   const router = useRouter();
+  
 
-
-  const handleUpdate = (event) => {1
+  const handleUpdate = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const jsonData = {
@@ -34,7 +34,7 @@ export default function Component({ posts }) {
       status: data.get('status')
     }
 
-      fetch(`https://vercelests.vercel.app/api/user`, {
+      fetch(`http://localhost:3000/api/user`, {
         method: 'PUT', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',
