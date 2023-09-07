@@ -5,7 +5,8 @@ import Swal from 'sweetalert2';
 import { useRouter } from "next/router";
 import Link from 'next/link';
 export async function getServerSideProps() {
-  const res = await fetch('https://975c-2403-6200-8851-ece7-701c-486f-4bb9-54c7.ngrok-free.app/api/users');
+  //Edit Ngrok
+  const res = await fetch('vercelests-git-main-zerplas.vercel.app/api/users');
   const posts = await res.json();
 
   return {
@@ -31,9 +32,11 @@ export default function Component({ posts }) {
       confirmButtonText: 'Yes, delete it!'
     });
   
+    
     if (result.isConfirmed) {
       // Perform the deletion using fetch
-      await fetch('https://975c-2403-6200-8851-ece7-701c-486f-4bb9-54c7.ngrok-free.app/api/users?id=' + id, {
+      //Edit Ngrok
+      await fetch('vercelests-git-main-zerplas.vercel.app/api/users?id=' + id, {
         method: 'DELETE',
       });
   
@@ -49,12 +52,12 @@ export default function Component({ posts }) {
     }
   };
 
-  // if (session) {
+  if (session) {
     return (
       <>
-        {/* Signed in as {session.user.email} <br />
+        Signed in as {session.user.email} <br />
         {session.user.fname} {session.user.lname} <br />
-        <button onClick={() => signOut()}>Sign out</button> */}
+        <button onClick={() => signOut()}>Sign out</button>
 
         <TableContainer component={Paper}>
           <Table>
@@ -79,8 +82,8 @@ export default function Component({ posts }) {
                   <TableCell>{post.status}</TableCell>
                   <td>
                 <ul class="list-inline m-0">
-                 <li class="list-inline-item">
-                      <button class="btn btn-success btn-sm rounded-0">Edit</button>
+                <li class="list-inline-item">
+                      <button><Link href={`/dashboard/user/edit/${post.id}`} className="btn btn-success btn-sm rounded-0">Edit</Link></button>
                    </li>
                     <li class="list-inline-item">
                    <button class="btn btn-danger btn-sm rounded-0" onClick={() => handleDelete(post.id)}>Delete</button>
@@ -101,14 +104,24 @@ export default function Component({ posts }) {
       </>
     );
   }
+  return (
+    <>
+   
+    <div className="container d-flex justify-content-center align-items-center" style={{height: '100vh'}}>
+    <div className="card" style={{width: '18rem'}}>
+      <div className="card-body">
+        <div className="alert alert-danger" role="alert">
+          Not signed in <br />
+          <button className="btn btn-primary" onClick={() => signIn()}>Sign in ?</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  // return (
-  //   <>
-  //     Not signed in <br />
-  //     <button onClick={() => signIn()}>Sign in</button>
-  //   </>
-  // );
-// }
+
+    </>
+  );
+}
 
 
 
