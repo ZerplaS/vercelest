@@ -35,6 +35,10 @@ export default function index() {
           <li className="nav-item">
           <Link className="nav-link" href="/info"  >ข้อมูล</Link>
           </li>
+
+          <li className="nav-item">
+          <Link className="nav-link" href="/dashboard"  >ข้อมูล</Link>
+          </li>
         </ul>
         <form className="d-flex" role="search">
           
