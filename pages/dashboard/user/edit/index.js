@@ -60,94 +60,91 @@ export default function Component({ posts }) {
   
   // if (session) {
     
-    return (
-      <>
-        <nav className="navbar navbar-light bg-success">
-          <div className="container-fluid">
-            <div className="d-flex justify-content-between align-items-center w-100">
-              {/* <div>Signed in as {session.user.email} {session.user.fname} {session.user.lname}</div>
-              <button className="btn btn-danger" onClick={() => signOut()}>Sign out</button> */}
-            </div>
+  return (
+    <>
+      <nav className="navbar navbar-light bg-success">
+        <div className="container-fluid">
+          <div className="d-flex justify-content-between align-items-center w-100">
+            {/* <div>Signed in as {session.user.email} {session.user.fname} {session.user.lname}</div>
+            <button className="btn btn-danger" onClick={() => signOut()}>Sign out</button> */}
           </div>
-        </nav>
-        <br />
-        <div className="container ">
-        <div className="card mt-4">
-          <div className="card-body">
+        </div>
+      </nav>
+      <br />
+      <div className="container ">
+      <div className="card mt-4">
+        <div className="card-body">
+        
           
-            
-            <form onSubmit={handleUpdate}>
-             {posts.user.map((post, i) => (
-              <>
-                      <Link><center><button className="btn btn-warning mx-1">Go Back</button></center></Link>
-              <div className="form-row">
-                <div className="form-group col-md-10">
-                  <label htmlFor="inputEmail4">Student Id</label>
-                  <input type="hidden" className="form-control" name ="studentid" id="studentid" placeholder="Student Id" 
-                  // onChange={(event) => { setPassword(event.target.value) }}
-                  defaultValue={post.id}
-                  required/>
-                </div>
-                <div className="form-group col-md-10">
-                  <label htmlFor="inputEmail4">Firstname</label>
-                  <input type="text" className="form-control" name ="firstname" id="firstname" placeholder="Firstname" 
-                  // onChange={(event) => { setPassword(event.target.value) }}
-                  defaultValue={post.firstname}
-                  required/>
-                </div>
-                <div className="form-group col-md-10">
-                  <label htmlFor="inputAddress">Lastname</label>
-                  <input type="text" className="form-control" name ="lastname" id="lastname" placeholder="Lastname" 
-                  // onChange={(event) => { setPassword(event.target.value) }}
-                  defaultValue={post.lastname}
-                  required/>
-                </div>
-                <div className="form-group col-md-10">
-                  <label htmlFor="inputAddress">Username</label>
-                  <input type="text" className="form-control" name ="username" id="username" placeholder="Username"
-                  // onChange={(event) => { setPassword(event.target.value) }}
-                  defaultValue={post.username}
-                  required />
-                </div>
-                <div className="form-group col-md-10">
-                  <label htmlFor="inputPassword4">Password</label>
-                  <input type="password" className="form-control" name ="password" id="password" placeholder="Password" 
-                  // onChange={(event) => { setPassword(event.target.value) }}
-                  defaultValue={post.password}
-                  required/>
-                </div>
-              </div>
+          <form onSubmit={handleUpdate}>
+           {posts.user.map((post, i) => (
+            <>
+            <center><Link href ="/dashboard">
+          <button className="btn btn-warning mx-1"> Go Back</button>
+          </Link></center>
+          <button type = "submit" className="btn btn-success">Finish Editing</button>
+          
+            <div className="form-row">
               <div className="form-group col-md-10">
-                <label htmlFor="inputAddress2">Status</label>
-                <input type="text" className="form-control" name ="status" id="status" placeholder="Status" 
+                <label htmlFor="inputEmail4">Student Id</label>
+                <input type="hidden" className="form-control" name ="studentid" id="studentid" placeholder="Student Id" 
                 // onChange={(event) => { setPassword(event.target.value) }}
-                defaultValue={post.status}
+                defaultValue={post.id}
                 required/>
               </div>
-              <div className="form-group">
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" id="gridCheck" />
-                  <label className="form-check-label" htmlFor="gridCheck">
-                    Check me out
-                  </label>
-                </div>
-                <div>
-                  <center>
-                  <button type = "submit" className="btn btn-success">Finish Editing</button>
-           
-                  </center>
-
-                </div>
+              <div className="form-group col-md-10">
+                <label htmlFor="inputEmail4">Firstname</label>
+                <input type="text" className="form-control" name ="firstname" id="firstname" placeholder="Firstname" 
+                // onChange={(event) => { setPassword(event.target.value) }}
+                defaultValue={post.firstname}
+                required/>
               </div>
-              </>
-              ))}
-            </form>
-          </div>
+              <div className="form-group col-md-10">
+                <label htmlFor="inputAddress">Lastname</label>
+                <input type="text" className="form-control" name ="lastname" id="lastname" placeholder="Lastname" 
+                // onChange={(event) => { setPassword(event.target.value) }}
+                defaultValue={post.lastname}
+                required/>
+              </div>
+              <div className="form-group col-md-10">
+                <label htmlFor="inputAddress">Username</label>
+                <input type="text" className="form-control" name ="username" id="username" placeholder="Username"
+                // onChange={(event) => { setPassword(event.target.value) }}
+                defaultValue={post.username}
+                required />
+              </div>
+              <div className="form-group col-md-10">
+                <label htmlFor="inputPassword4">Password</label>
+                <input type="password" className="form-control" name ="password" id="password" placeholder="Password" 
+                // onChange={(event) => { setPassword(event.target.value) }}
+                defaultValue={post.password}
+                required/>
+              </div>
+            </div>
+            <div className="form-group col-md-10">
+              <label htmlFor="inputAddress2">Status</label>
+              <input type="text" className="form-control" name ="status" id="status" placeholder="Status" 
+              // onChange={(event) => { setPassword(event.target.value) }}
+              defaultValue={post.status}
+              required/>
+            </div>
+            <div className="form-group">
+              <div className="form-check">
+                <input className="form-check-input" type="checkbox" id="gridCheck" />
+                <label className="form-check-label" htmlFor="gridCheck">
+                  Check me out
+                </label>
+              </div>
+            </div>
+            </>
+            ))}
+          </form>
         </div>
-        </div>
-      </>
-    );
-  // }
+      </div>
+      </div>
+    </>
+  );
+// }
 
   return (
     <>
