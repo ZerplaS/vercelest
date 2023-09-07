@@ -1,6 +1,7 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import Link from 'next/link';
 import { useRouter } from "next/router";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export async function getServerSideProps(req) {
@@ -79,9 +80,9 @@ export default function Component({ posts }) {
           <form onSubmit={handleUpdate}>
            {posts.user.map((post, i) => (
             <>
-            <center><Link href ="/dashboard">
-          <button className="btn btn-warning mx-1"> Go Back</button>
-          </Link></center>
+            <Link href ="/dashboard">
+          <button className="btn btn-danger mx-1"> Go Back</button>
+          </Link>
           <button type = "submit" className="btn btn-success">Finish Editing</button>
           
             <div className="form-row">
