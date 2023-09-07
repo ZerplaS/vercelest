@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export async function getServerSideProps(req) {
   const id = req.query;
-  const res = await fetch('https://vercelests.vercel.app/api/user?id=' + id, {
+  const res = await fetch('https://vercelests.vercel.app//api/user?id=' + id, {
     method: 'GET',
   })
   const posts = await res.json();
@@ -35,7 +35,7 @@ export default function Component({ posts }) {
       status: data.get('status')
     }
 
-      fetch(`https://vercelests-git-main-zerplas.vercel.app/api/user`, {
+      fetch(`https://vercelests.vercel.app/api/user`, {
         method: 'PUT', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',

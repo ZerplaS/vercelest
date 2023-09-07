@@ -34,7 +34,7 @@ export default function Component({ posts }) {
       status: data.get('status')
     }
 
-      fetch(`https://vercelests-git-main-zerplas.vercel.app/api/user`, {
+      fetch(`http://localhost:3000/api/user`, {
         method: 'PUT', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',
